@@ -1,16 +1,22 @@
+import { Recipe } from './Recipe/Recipe';
+import recipies from './recipes.json';
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+    <>
+      {recipies.map(({name, time, servings, calories, image}) => (
+        <Recipe
+          key={image}
+          name={name}
+          time={time}
+          servings={servings}
+          calories={calories}
+          image={image}
+        />
+    
+        ))
+      }
+</>
+  )
+    }
