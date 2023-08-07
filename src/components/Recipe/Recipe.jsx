@@ -1,21 +1,27 @@
-import { HiOutlineChartBar, HiOutlineChartPie } from 'react-icons/hi';
-import { BsAlarm } from 'react-icons/bs';
-import { RecipeInfo } from './RecipeInfo';
-import {RecipeList } from './Resipe.styled'
-export function Recipe ({name, time, servings, calories, image}){
-    return <div>
+import {
+    HiOutlineChartBar,
+    HiOutlineChartPie,
+  } from "react-icons/hi";
+  import { BsFillAlarmFill } from "react-icons/bs"; 
+  import { RecipeInfo } from "./RecipeInfo";
+  import {
+    RecipeList,
+    RecipeCard,
+    RecipeImage,
+  } from "./Resipe.styled";
+  import { Difficulty } from "./Difficulty";
+  
+  export function Recipe({ name, time, servings, calories, image, difficulty }) {
+    return (
+      <RecipeCard>
         <h2>{name}</h2>
-        <img src={image} alt="" width="450" />
-        <RecipeList >
-            <RecipeInfo 
-                text={`${time} min`} 
-                icon={BsAlarm}/>
-            <RecipeInfo 
-                text={`${servings} servings`} 
-                icon={HiOutlineChartPie}/>
-            <RecipeInfo 
-                text={`${calories} calories`} 
-                icon={HiOutlineChartBar}/>
-        </RecipeList >
-    </div>
-}
+        <RecipeImage src={image} alt="" />
+        <RecipeList>
+          <RecipeInfo text={`${time} min`} icon={BsFillAlarmFill} /> {/* Змінили ім'я іконки тут */}
+          <RecipeInfo text={`${servings} servings`} icon={HiOutlineChartPie} />
+          <RecipeInfo text={`${calories} calories`} icon={HiOutlineChartBar} />
+        </RecipeList>
+        <Difficulty difficulty={difficulty} />
+      </RecipeCard>
+    );
+  }
